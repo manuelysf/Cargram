@@ -8,7 +8,7 @@ const AuthPage = () => {
         <Container maxWidth={"container.md"} padding={0}>
             <Flex justifyContent={"center"} alignItems={"center"} gap={10}>
                 {/* Left hand side*/}
-                <Box display={{base:"none",md:"block"}}> 
+                <Box display={{base:"none",md:"block"}}> {/* Base = smaller screens */}
                     <Image src='/auth.jpeg'h={650} alt='Phone img' />
                 </Box>
                 {/* right hand side*/}
