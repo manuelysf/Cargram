@@ -1,6 +1,6 @@
 export const CargramLogo = () => (
-    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-    width="100%" viewBox="0 0 673 370" enable-background="new 0 0 673 370" xml:space="preserve">
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    width="100%" viewBox="0 0 673 370" enableBackground="new 0 0 673 370" xmlSpace="preserve">
 <path fill="#000000" opacity="1.000000" stroke="none" 
    d="
 M449.000000,371.000000 
@@ -3569,8 +3569,8 @@ z"/>
 );
 
 export const CargramLogoMobile = () => (
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="100%" viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="100%" viewBox="0 0 500 500" enableBackground="new 0 0 500 500" xmlSpace="preserve">
 <path fill="#000000" opacity="1.000000" stroke="none" 
 	d="
 M240.000000,501.000000 
