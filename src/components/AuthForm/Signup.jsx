@@ -13,6 +13,7 @@ const Signup = () => {
     });
 
     const [showPassword, setShowPassword] = useState(false);
+    {/* Abstraction */}
     const {loading,error,signup} = useSignUpWithEmailAndPassword();
   return (
     <>
