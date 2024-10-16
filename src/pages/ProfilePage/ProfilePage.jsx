@@ -3,8 +3,17 @@ import React from 'react'
 import ProfileHeader from '../../components/Profile/ProfileHeader'
 import ProfileTabs from '../../components/Profile/ProfileTabs'
 import ProfilePosts from '../../components/Profile/ProfilePosts'
+import { useParams } from 'react-router-dom'
+import useGetUserProfileByUsername from '../../hooks/useGetUserProfileByUsername'
+import UserNotFound from '../NotFoundPage/UserNotFound'
+import ProfileHeaderSkeleton from '../../components/Profile/ProfileHeaderSkeleton'
 
 const ProfilePage = () => {
+  const {username} = useParams();
+  const {isLoading,userProfile} = useGetUserProfileByUsername(username);
+
+  const userNotFound = !isLoading && !userProfile;
+  if(userNotFound) return <UserNotFound/>
   return (
     <Container maxW={"container.lg"} py={5}>
         <Flex
@@ -15,7 +24,8 @@ const ProfilePage = () => {
             mx={"auto"}
             flexDirection={"column"}
             >
-            <ProfileHeader/>
+            {!isLoading && userProfile && <ProfileHeader />}
+            {isLoading && <ProfileHeaderSkeleton />}
         </Flex>
         <Flex
             px={{base:2,sm:4}}
