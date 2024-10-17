@@ -1,22 +1,44 @@
-import { Avatar, Box, Button, Flex, VStack } from '@chakra-ui/react'
+import { Avatar, Box, Button, Flex, Link, VStack } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import useFollowUser from '../../hooks/useFollowUser'
+import useAuthStore from '../../store/authStore';
+import { Link as RouterLink } from "react-router-dom";
 
-const SuggestedUser = ({name, followers, avatar}) => {
-    const [isFollowed,setIsFollowed] = useState(false)
+const SuggestedUser = ({user,setUser}) => {
+    const {isFollowing,isUpdating,handleFollowUser} = useFollowUser(user.uid);
+    const authUser = useAuthStore(state => state.user);
+
+    const onFollowUser = async () => {
+        await handleFollowUser();
+        setUser({
+            ...user,
+            followers: isFollowing
+				? user.followers.filter((follower) => follower.uid !== authUser.uid)
+				: [...user.followers, authUser],
+        })
+    }
+
   return (
     <Flex justifyContent={"space-between"} alignItems={"center"} w={"full"}>
-        <Flex  alignItems={"center"} gap={2}>
-            <Avatar src={avatar} name={name} size={"md"}/>
-            <VStack spacing={2} alignItems={"flex-start"}>
-                <Box fontSize={12} fontFamily={"bold"}>
-                    {name}
-                </Box>
-                <Box fontSize={11} color={"gray.500"}>
-                    {followers} followers
-                </Box>
-            </VStack>
-        </Flex>
-        <Button 
+        
+            <Link
+                to={`/${user?.username}`}
+				as={RouterLink}>
+                    <Flex  alignItems={"center"} gap={2}>
+                        <Avatar src={user.profilePicURL} size={"md"}/>
+                        <VStack spacing={2} alignItems={"flex-start"}>
+                            <Box fontSize={12} fontFamily={"bold"}>
+                                {user.fullName}
+                            </Box>
+                            <Box fontSize={11} color={"gray.500"}>
+                                {user.followers.length} followers
+                            </Box>
+                        </VStack>
+                    </Flex>
+            </Link>
+        {/* Follow btn bei eigenem profil verbergen */}
+       {authUser.uid !== user.uid && (
+         <Button 
             fontSize={13} 
             bg={"transparent"} 
             p={0} h={"max-content"} 
@@ -24,10 +46,12 @@ const SuggestedUser = ({name, followers, avatar}) => {
             color={"blue.400"} 
             cursor={"pointer"} 
             _hover={{color: "white"}}
-            onClick={() => setIsFollowed(!isFollowed)}
+            onClick={onFollowUser}
+            isLoading={isUpdating}
             >
-            {isFollowed ? "Unfollow" : "Follow"}
+            {isFollowing ? "Unfollow" : "Follow"}
         </Button>
+       )}
     </Flex>
   )
 }
