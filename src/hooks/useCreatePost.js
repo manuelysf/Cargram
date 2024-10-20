@@ -43,7 +43,7 @@ const useCreatePost = () => {
 
 			newPost.imageURL = downloadURL;
 
-			createPost({ ...newPost, id: postDocRef.id });
+			if (userProfile.uid === authUser.uid) createPost({ ...newPost, id: postDocRef.id }); // verhindert falsche states
 
 			if (pathname !== "/" && userProfile.uid === authUser.uid) addPost({ ...newPost, id: postDocRef.id });
 

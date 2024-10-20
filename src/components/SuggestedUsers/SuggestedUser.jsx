@@ -20,22 +20,23 @@ const SuggestedUser = ({user,setUser}) => {
 
   return (
     <Flex justifyContent={"space-between"} alignItems={"center"} w={"full"}>
-        
-            <Link
-                to={`/${user?.username}`}
-				as={RouterLink}>
-                    <Flex  alignItems={"center"} gap={2}>
-                        <Avatar src={user.profilePicURL} size={"md"}/>
-                        <VStack spacing={2} alignItems={"flex-start"}>
-                            <Box fontSize={12} fontFamily={"bold"}>
-                                {user.fullName}
-                            </Box>
-                            <Box fontSize={11} color={"gray.500"}>
-                                {user.followers.length} followers
-                            </Box>
-                        </VStack>
-                    </Flex>
+        <Flex  alignItems={"center"} gap={2}>
+            <Link to={`/${user?.username}`} as={RouterLink}>
+                <Avatar src={user.profilePicURL} size={"md"}/>
             </Link>
+
+            <VStack spacing={2} alignItems={"flex-start"}>
+                <Link to={`/${user?.username}`} as={RouterLink}>
+                    <Box fontSize={12} fontFamily={"bold"}>
+                        {user.fullName}
+                    </Box>
+                </Link>
+                
+                <Box fontSize={11} color={"gray.500"}>
+                    {user.followers.length} followers
+                </Box>
+            </VStack>
+        </Flex>
         {/* Follow btn bei eigenem profil verbergen */}
        {authUser.uid !== user.uid && (
          <Button 
