@@ -28,7 +28,7 @@ const FeedPosts = () => {
 
             <Flex flexDir='column' textAlign={"center"} mx={"auto"} mt={10}>
                 <Text fontSize={"md"} color={"white.400"}>
-                    Dayuum. Looks like you don&apos;t have any friends.
+                    Dayyyyum. Looks like you don&apos;t have any friends.
                 </Text>
                 <Text color={"white.400"}>Stop coding and go make some!!</Text>
             </Flex>
