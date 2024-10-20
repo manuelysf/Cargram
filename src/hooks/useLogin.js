@@ -6,11 +6,7 @@ import useAuthStore from '../store/authStore';
 
 const useLogin = () => {
   const showToast = useShowToast();
-  const [
-    signInWithEmailAndPassword,,
-    loading,
-    error,
-  ] = useSignInWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword,,loading,error,] = useSignInWithEmailAndPassword(auth);
   {/* Error und Loading state funktioniert nicht */}
 
   const loginUser = useAuthStore(state => state.login)

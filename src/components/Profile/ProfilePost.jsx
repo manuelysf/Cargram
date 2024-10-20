@@ -15,7 +15,7 @@ import usePostStore from '../../store/postStore'
 import Caption from '../Caption/Caption'
 
 const ProfilePost = ({post}) => {
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen, onOpen, onClose } = useDisclosure();
     const userProfile = useUserProfileStore((state) => state.userProfile);
     const authUser = useAuthStore((state) => state.user);
     const showToast = useShowToast();
