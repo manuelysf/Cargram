@@ -133,7 +133,9 @@ const ProfilePost = ({post}) => {
                         )}
                     </Flex>
 
-                    <Divider my={4} bg={"gray.500"}/>
+                    {post.comments.length > 0 && (
+                        <Divider my={4} bg={"gray.500"}/>
+                    )}
 
                     <VStack w={"full"} alignItems={"start"} maxH={"350px"} overflow={"auto"}>
                         {/* Kommentare */}
